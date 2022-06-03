@@ -40,4 +40,36 @@ $(document).ready(function(){
             $('.overlay, #order').fadeIn();
         });
     });
+
+    function validateForm(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true,
+                },
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите свое имя",
+                    minlength: jQuery.validator.format("Имя не может быть короче {0} символов")
+                },
+                
+                phone: "Пожалуйста, введите свой номер телефона",
+                email: {
+                    required: "Пожалуйста, ввдедите свой e-mail",
+                    email: "Некорректный email"
+                },
+            },
+        });
+    };
+    validateForm('#consultation-form');
+    validateForm('#consultation form');
+    validateForm('#order form');
+
 });
